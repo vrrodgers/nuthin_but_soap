@@ -1,1 +1,5 @@
-<h1> hi</h1>
+<% @products.each do |product| %>
+  <%=  product.name %>
+  <%=  product.description %>
+  <%=  image_tag product.image %>
+<%end %>
