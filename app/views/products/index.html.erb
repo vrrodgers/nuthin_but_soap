@@ -1,5 +1,9 @@
-<% @products.each do |product| %>
-  <%=  product.name %>
-  <%=  product.description %>
-  <%=  image_tag product.image %>
-<%end %>
+<%= render 'jumbotron' %> 
+
+<div class="album text-muted">
+  <div class="container">
+    <div class="row">
+      <%= render 'productslist'%>
+    </div>
+  </div>
+</div>

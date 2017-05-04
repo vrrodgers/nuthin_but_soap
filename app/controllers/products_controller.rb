@@ -16,6 +16,14 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to product_path, notice: 'Product was created' }
+      else
+        format.html { render :new }
+      end
+end 
+
   end
 
 
@@ -39,16 +47,17 @@ class ProductsController < ApplicationController
 
   private
     def set_product
-      @products = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     end
 
     def product_params
-      params.require(:recipe).permit(:name,
-                                    :image,
-                                    :description,
-                                    :price,
-                                    :catagory_id,
-                                    :inventory)
+      params.require(:product).permit(:name,
+                                      :image,
+                                      :description,
+                                      :price,
+                                      :inventory,
+                                      catagories_attributes: [:id, :name, :_destroy] 
+                                     )
 
     end
 
