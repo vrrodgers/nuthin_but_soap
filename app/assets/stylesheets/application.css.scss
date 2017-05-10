@@ -1,0 +1,46 @@
+@import "bootstrap";
+@import "font-awesome";
+
+.navbar navbar-default{
+  color: red;
+}
+#wrap{
+  width: 960px;
+  margin: 0 auto;
+}
+
+.jumbotron {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  margin-bottom: 0;
+  background-color: #fff;
+  background: url(http://assets.wholefoodsmarket.com/www/blogs/whole-story/post-images/20150914Alaffia-Good-Soap.jpg) no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+
+.card-block{
+  margin-left: 25px;
+}
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  text-align: center;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
