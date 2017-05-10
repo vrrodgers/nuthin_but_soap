@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <title>NuthinButSoap</title>
@@ -10,11 +11,18 @@
   </head>
 
   <body>
-    <%= render 'layouts/nav' %>
+    <div id="wrap">
+      <%= render 'layouts/nav' %>
       
-    
-   
-    <%= yield %>
-    <%= render 'layouts/footer' %>
+      
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+        <%= yield %>
+      
+
+      <%= render 'layouts/footer' %>
+      
+    </div>  
   </body>
 </html>

@@ -22,7 +22,7 @@
 
       <div class="form-group">
         <div class="control-label col-md-2">
-          <%= f.label :description, "Enter description" %>
+          <%= f.label :description, "Enter Description" %>
         </div>
         <div class= "col-md-8">
           <%= f.text_field :description, class: "form-control", placeholder: "Enter your product description", autofocus: true %>
@@ -46,19 +46,13 @@
       </div>
 
        <div class="form-group">
-        <div class="control-label col-md-2">
-          <%= f.label :catagory, "Enter inventory " %>
-        </div>
-        <div class= "col-md-8">
-
-          <%= f.fields_for :catagories do |catagory_form| %>
-          <% render 'products/catagory_fields', f: catagory_form %>
-          <% end %>
-        </div>
-      </div>
-      <div>
-        <%= link_to_add_association 'Add Catagory', f, :catagories%>
-      </div>
+         <div class="control-label col-md-2">
+          <%= f.label :catagory, "Select Category" %>
+         </div>
+         <div class= "col-md-8">
+          <%= f.collection_select :catagory_id, Catagory.order(:name),:id,:name, include_blank: true %>
+         </div>
+       </div>
 
       <div class= "form-group">
         <div class="col-md-offset-2 col-md-10">

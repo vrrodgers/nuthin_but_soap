@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :catagory_products
+  devise_for :users
+  resources :orders
+  resources :catagory_products, only: [:index, :create]
   resources :products
 
-
+  root to: "home#index"
 
 end

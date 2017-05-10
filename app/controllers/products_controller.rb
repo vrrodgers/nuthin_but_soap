@@ -2,7 +2,21 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+     @products = Product.all
+    if params[:filter] == "discount"
+      @products = @products.where("price <= ?", 5)
+    end
+    if params[:sort]
+      @products = @products.order(params[:sort] => params[:direction])
+    end
+    if params[:category]
+      category = Category.find_by(:name => params[:category])
+      @products = category.products
+      # @products = Category.find_by(:name => params[:category]).products
+    end
+    if params[:search]
+        @products = @products.where('title LIKE ?', "%" + params[:search] + "%")
+    end
   end
 
 
@@ -16,14 +30,12 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to product_path, notice: 'Product was created' }
-      else
-        format.html { render :new }
-      end
-end 
-
+     if @product.save
+      flash[:success] = "Product was created"
+      redirect_to product_path(@product)
+    else
+      render 'new'
+    end
   end
 
 
@@ -56,7 +68,7 @@ end
                                       :description,
                                       :price,
                                       :inventory,
-                                      catagories_attributes: [:id, :name, :_destroy] 
+                                      :catagory_id 
                                      )
 
     end

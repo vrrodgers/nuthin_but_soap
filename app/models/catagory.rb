@@ -1,3 +1,4 @@
 class Catagory < ApplicationRecord
-  belongs_to :product
+  has_many :products
+  scope :soap, -> { where(name:'test' )}
 end

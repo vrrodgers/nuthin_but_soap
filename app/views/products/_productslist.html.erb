@@ -1,10 +1,15 @@
 <% @products.each do |product| %> 
-  <div class="card" style="width: 20rem;">
-    <%= image_tag product.image, class: "card-img-top", alt:"Card image cap" %>
-    <div class="card-block">
-      <h4 class="card-title"><%=  product.name %></h4>
-      <p class="card-text"><%=  product.description %></p>
-      <%= link_to " view #{product.name}", product_path(product),  class: "btn btn-primary" %>
+  <div class="card-deck">
+    <div class="card">
+      <%= image_tag product.image, class: "card-img-top", alt:"Card image cap" %>
+      <div class="card-block">
+        <h4 class="card-title"><%=  product.name %></h4>
+        <p class="card-text"><%=  product.description.truncate(20) %></p>
+        <p>
+          <%= link_to " View More", product_path(product),  class: "btn btn-primary" %>
+          <%= link_to " Edit", edit_product_path(product),  class: "btn btn-primary" %>
+        </p>
+      </div>
     </div>
-  </div>
+  </div>  
 <% end %>
