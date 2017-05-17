@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :product
+  has_many :carted_product
   belongs_to :user
 
   SALES_TAX = 0.09

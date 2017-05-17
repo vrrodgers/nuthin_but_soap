@@ -26,8 +26,13 @@
         <%= link_to "New Product", new_product_path, class: "nav-link" , style: 'color: black'%>
       </li>
       <li class="nav-item">
-        <%= login_helper 'nav-link'%>
+        <%= login_helper 'nav-link' %>
       </li>
+      <% if current_user && current_user.admin? %>
+        <li class="nav-item">
+          <%= link_to "Admin", rails_admin_path, class: 'nav-link' %>
+        </li>
+      <% end %>  
     </ul>
     <%= form_tag products_path, method: :get, class: "form-inline my-2 my-lg-0", role: "search" do %>
       <%=text_field_tag :search, params[:search], class: "form-control mr-sm-2" %>

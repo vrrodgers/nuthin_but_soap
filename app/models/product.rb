@@ -4,8 +4,7 @@ class Product < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   belongs_to :catagory
-  has_many :orders
-  
+  belongs_to :brand  
   validates_presence_of :name, :image, :inventory
   validates :description, presence: true, length: {minimum: 5, maximum:500}
   validates :price, presence: true, format: { with: /\A\d+(?:\.\d{0,2})?\z/ }, numericality: { greater_than: 0, less_than: 1000000 }
