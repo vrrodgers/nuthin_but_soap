@@ -7,7 +7,7 @@ module ProductsHelper
     if img.model.image?
       img
     else 
-      image_generator(height: '200', width: '100')
+      image_generator(height: '276', width: '183')
     end
   end
 

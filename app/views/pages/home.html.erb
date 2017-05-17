@@ -1,0 +1,15 @@
+<% @soap.each do |soap|%>
+ <div class="card-deck">
+    <div class="card">
+      <%= image_tag soap.image, class: "card-img-top", alt:"Card image cap" %>
+      <div class="card-block">
+        <h4 class="card-title"><%=  soap.name %></h4>
+        <p class="card-text"><%=  soap.description.truncate(20) %></p>
+        <p>
+          <%= link_to " View More", product_path(soap),  class: "btn btn-primary" %>
+          <%= link_to " Edit", edit_product_path(soap),  class: "btn btn-primary" %>
+        </p>
+      </div>
+    </div>
+  </div>  
+<% end %>

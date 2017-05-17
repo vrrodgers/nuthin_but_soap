@@ -1,13 +1,36 @@
 @import "bootstrap";
 @import "font-awesome";
 
-.navbar navbar-default{
-  color: red;
+.navbar-brand{
+  color: #000;
+}
+#dropdown-menu{
+  color: #000;
+}
+/* unvisited link */
+a:link {
+    color: #0B020F;
+}
+
+/* visited link */
+a:visited {
+    color: #A397A9;
+}
+
+/* mouse over link */
+a:hover {
+    color: #B68FCB;
+}
+
+/* selected link */
+a:active {
+    color: #453195;
 }
 #wrap{
   width: 960px;
   margin: 0 auto;
 }
+
 
 .jumbotron {
   padding-top: 6rem;
@@ -21,19 +44,39 @@
 
 .jumbotron p:last-child {
   margin-bottom: 0;
+
+
 }
 
 .jumbotron-heading {
   font-weight: 300;
 }
 
+
 .jumbotron .container {
   max-width: 40rem;
 }
 
+.breadcrumb{
+  color: black;
+  text-align: center;
+  word-spacing: 8px;
+  letter-spacing: 2px;
+  background-color: transparent;
 
+}
+
+
+.card{
+  border: none;
+  margin: 15px;
+}
 .card-block{
   margin-left: 25px;
+}
+.card-title{
+  text-align: center;
+
 }
 footer {
   padding-top: 3rem;

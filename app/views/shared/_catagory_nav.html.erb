@@ -1,0 +1,5 @@
+<nav class="breadcrumb nav-style">
+  <% @catagories.each do |catagory| %>
+    <%= link_to "#{catagory.name}",catagory_path(:name =>"#{catagory.name}") %> |
+ <% end%>
+</nav>

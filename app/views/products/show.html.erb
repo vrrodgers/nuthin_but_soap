@@ -1,11 +1,39 @@
 
 
 <div class=" container">
-  <div class= "row"
+  <div class= "row">
     <div class="col-md-7">
-      <%= image_tag @product.image %>
+      <%= image_tag @product.image, width: '100%' %>
     </div>  
+    <div class= "col-md-5">
+      <h2><%= @product.name %></h2>
+      <p><%= @product.catagory_name %></p>
+      <p><%= @product.description %></p>
+    </div> 
   </div>
-  <%= @product.name %>
-  <%= @product.catagory_id %>
+  <hr>
+
+  <table>
+    <tr>
+      <td>Subtotal:</td>
+      <td><%= number_to_currency(@product.price) %></td>
+    </tr>
+    <tr>
+      <td>Tax:</td>
+      <td><%= number_to_currency(@product.tax) %></td>
+    </tr>
+    <tr>
+      <td>Total:</td>
+      <td><%= number_to_currency(@product.total) %></td>
+    </tr>
+  </table>
+  <%# if user_signed_in? %>
+    <%= form_tag "#{@product.slug}/carted_products" do %>
+      <%= label_tag :quantity %>
+      <%= text_field_tag :quantity %>
+      <%= hidden_field_tag :product, @product.id %>
+
+      <%= submit_tag "Add To Cart" %>
+    <% end %>
+  <%# end %>
 </div>

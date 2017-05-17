@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_catagory, only: [:index, :show, :edit, :update, :destroy]
 
+  
   def index
      @products = Product.all
     if params[:filter] == "discount"
@@ -15,10 +17,9 @@ class ProductsController < ApplicationController
       # @products = Category.find_by(:name => params[:category]).products
     end
     if params[:search]
-        @products = @products.where('title LIKE ?', "%" + params[:search] + "%")
+        @products= @products.where('name LIKE ?', "%" + params[:search] + "%")
     end
   end
-
 
   def show
   end
@@ -30,11 +31,12 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-     if @product.save
-      flash[:success] = "Product was created"
-      redirect_to product_path(@product)
-    else
-      render 'new'
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+      else
+        format.html { render :new }
+      end
     end
   end
 
@@ -48,12 +50,14 @@ class ProductsController < ApplicationController
       flash[:success] = "Product was updated successfully!"
       redirect_to product_path(@product)
     else
+
       render 'edit'
     end  
   end
   
   def destroy
     @product.destroy
+    redirect_to root_path
   end
 
 
@@ -73,7 +77,8 @@ class ProductsController < ApplicationController
 
     end
 
-      
-
+  def set_catagory
+    @catagories = Catagory.all
+  end
 
 end

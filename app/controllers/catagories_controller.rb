@@ -1,7 +1,14 @@
 class CatagoriesController < ApplicationController
-  before_action :set_catagory, only: [:show, :edit, :update, :destroy]
+  before_action :set_catagory, only: [:catagory]
+
+  def catagory
+    @product_catagory = @catagory.products
+  end
   private 
-  def set_catagory
-    @catagory = Catagory.friendly.find(params[:id])
-   end
+
+   def set_catagory
+    @catagory = Catagory.find_by(:name => params[:name])
+    @catagories = Catagory.all
+  end    
+
 end
